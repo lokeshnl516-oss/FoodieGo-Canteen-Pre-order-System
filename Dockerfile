@@ -1,14 +1,21 @@
-# Step 1: Use the official and actively maintained Eclipse Temurin image for Java 17
-FROM eclipse-temurin:17-jdk-jammy
-
-# Step 2: Set the working directory inside the cloud container
+# Stage 1: Build the Maven application inside Render's environment
+FROM maven:3.8.4-openjdk-17-slim AS build
 WORKDIR /app
 
-# Step 3: Copy your compiled jar file into the container
-COPY target/canteen-0.0.1-SNAPSHOT.jar app.jar
+# Copy your source code and configurations
+COPY pom.xml .
+COPY src ./src
 
-# Step 4: Expose the standard port Render expects
+# Compile and package the application into a JAR file, skipping tests for speed
+RUN mvn clean package -DskipTests
+
+# Stage 2: Run the compiled application using a slim runtime image
+FROM eclipse-temurin:17-jdk-jammy
+WORKDIR /app
+
+# Copy the compiled JAR file directly from the build stage above
+COPY --from=build /app/target/canteen-0.0.1-SNAPSHOT.jar app.jar
+
+# Expose port and run the server
 EXPOSE 10000
-
-# Step 5: Command to execute your Spring Boot application
 ENTRYPOINT ["java", "-jar", "app.jar", "--server.port=10000"]
