@@ -2,8 +2,11 @@ const API_BASE_URL = 'http://localhost:8080/api';
 
 class ApiService {
     static async request(endpoint, method = 'GET', body = null) {
-        const url = "https://foodiego-canteen-system.onrender.com";
-        const options = {
+    const BASE_URL = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
+    ? "http://localhost:10000"                              
+    : "https://foodiego-canteen-system.onrender.com";       
+    
+    const options = {
             method,
             headers: {
                 'Content-Type': 'application/json',
