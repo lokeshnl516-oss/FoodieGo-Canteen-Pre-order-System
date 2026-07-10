@@ -1,5 +1,5 @@
-# Step 1: Use an official OpenJDK image to run the jar
-FROM openjdk:17-jdk-slim
+# Step 1: Use the official and actively maintained Eclipse Temurin image for Java 17
+FROM eclipse-temurin:17-jdk-jammy
 
 # Step 2: Set the working directory inside the cloud container
 WORKDIR /app
