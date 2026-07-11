@@ -52,7 +52,7 @@ class ApiService {
     }
 
     static login(email, password) {
-        return this.request('/auth/login', 'POST', {
+        return this.request('${BASE_URL}/auth/login', 'POST', {
             email, password
         });
     }
