@@ -43,7 +43,7 @@ class ApiService {
 
     // Auth endpoints
     static register(name, email, phone, password) {
-        return this.request('/auth/register', 'POST', {
+        return this.request('${url}/auth/register', 'POST', {
             name, email, phone, password
         });
     }
