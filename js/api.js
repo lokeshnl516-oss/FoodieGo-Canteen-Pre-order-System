@@ -6,6 +6,8 @@ class ApiService {
     ? "http://localhost:10000/api"                            
     : "https://foodiego-canteen-system.onrender.com/api";      
     
+    const fullUrl = `${BASE_URL}${endpoint}`;
+
     const options = {
             method,
             headers: {
@@ -23,8 +25,8 @@ class ApiService {
         }
 
         try {
-            const response = await fetch(url, options);
-            
+            const response = await fetch(fullUrl, options);
+    
             // Handle non-OK responses
             if (!response.ok) {
                 try {
@@ -46,13 +48,13 @@ class ApiService {
 
     // Auth endpoints
     static register(name, email, phone, password) {
-        return this.request('${BASE_URL}/auth/register', 'POST', {
+        return this.request('/auth/register', 'POST', {
             name, email, phone, password
         });
     }
 
     static login(email, password) {
-        return this.request('${BASE_URL}/auth/login', 'POST', {
+        return this .request('${}/auth/login', 'POST', {
             email, password
         });
     }
