@@ -2,8 +2,13 @@ const API_BASE_URL = 'http://localhost:8080/api';
 
 class ApiService {
     static async request(endpoint, method = 'GET', body = null) {
-        const url = `${API_BASE_URL}${endpoint}`;
-        const options = {
+    const BASE_URL = (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1")
+    ? "http://localhost:10000/api"                            
+    : "https://foodiego-canteen-system.onrender.com/api";      
+    
+    const fullUrl = `${BASE_URL}${endpoint}`;
+
+    const options = {
             method,
             headers: {
                 'Content-Type': 'application/json',
@@ -20,8 +25,8 @@ class ApiService {
         }
 
         try {
-            const response = await fetch(url, options);
-            
+            const response = await fetch(fullUrl, options);
+    
             // Handle non-OK responses
             if (!response.ok) {
                 try {
@@ -49,7 +54,7 @@ class ApiService {
     }
 
     static login(email, password) {
-        return this.request('/auth/login', 'POST', {
+        return this .request('${}/auth/login', 'POST', {
             email, password
         });
     }
