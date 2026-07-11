@@ -27,7 +27,7 @@ import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/auth")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "https://lokeshnl516-oss.github.io", allowCredentials = "true")
 public class AuthController {
 
     @Autowired

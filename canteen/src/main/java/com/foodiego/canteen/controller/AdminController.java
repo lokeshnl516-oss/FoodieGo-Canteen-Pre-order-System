@@ -23,6 +23,7 @@ import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/admin")
+@CrossOrigin(origins = "https://lokeshnl516-oss.github.io", allowCredentials = "true")
 public class AdminController {
 
     @Autowired

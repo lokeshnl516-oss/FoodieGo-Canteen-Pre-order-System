@@ -27,7 +27,7 @@ import com.foodiego.canteen.service.OrderService;
 
 @RestController
 @RequestMapping("/api/user")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "https://lokeshnl516-oss.github.io", allowCredentials = "true")
 public class UserRestController {
 
     @Autowired

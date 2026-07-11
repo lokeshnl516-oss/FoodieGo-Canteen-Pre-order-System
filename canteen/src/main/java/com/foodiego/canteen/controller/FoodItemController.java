@@ -18,7 +18,7 @@ import com.foodiego.canteen.service.FoodItemService;
 
 @RestController
 @RequestMapping("/api/food-items")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "https://lokeshnl516-oss.github.io", allowCredentials = "true")
 public class FoodItemController {
 
     @Autowired

@@ -29,7 +29,7 @@ import com.foodiego.canteen.service.OrderService;
 
 @RestController
 @RequestMapping("/api/admin")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "https://lokeshnl516-oss.github.io", allowCredentials = "true")
 public class AdminRestController {    
 
     @Autowired
